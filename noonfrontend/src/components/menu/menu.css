@@ -1,0 +1,9 @@
+.menuWrapper {
+  width: 100%;
+  background-color: #ff4c83;
+  padding: 12px 10px;
+  justify-content: space-around;
+  display: inline-flex; }
+  .menuWrapper .menu-icons {
+    font-size: 35px;
+    color: #ecf0f1; }

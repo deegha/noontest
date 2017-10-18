@@ -1,0 +1,102 @@
+@import 'styles/variables.scss';
+
+.continerNode{
+    width: 100%;
+    border-bottom: 1px solid $secondary-ash;
+    .wrapperNode {
+        width: 100%;
+        .nodeHeader {
+            width: 100%;
+            display: inline-flex;
+            .wrapper {
+                padding: 10px 20px;
+                 display: inline-flex;
+            }
+            .profilePic {
+                width: 10%;
+                img {
+                    border-radius: 25px;
+                    width : 100%;
+                }
+            }
+            .profileName {
+                span {
+                    color: $primery-blue;
+                    position: relative;
+                    left: 10px;
+                    top: 7px;
+                    font-size: $primery-font-weight;
+                }
+            }
+        }
+        .nodeImage{
+            margin-bottom: -27px;
+            img {
+                width: 100%;
+            }
+            .imageOptions {
+                width : 100%;
+
+                position: relative;
+                bottom: 53px;
+                .price {
+                    color: $primery-white;
+                    padding-left: 18px;
+                    .title {
+                        font-weight: $secondary-font-weight;
+                    }
+                    .priceTag {
+                        font-weight:$primery-font-weight;
+                    }
+                }
+                .favourite{
+                    float: right;
+                    position: relative;
+                    bottom: 29px;
+                    font-size: 24px;
+                    right: 20px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .nodeInfo{
+            width : 100%;
+            padding-bottom: 17px;
+               .wrapper {
+                    padding: 0px 20px 10px 20px;
+                }
+     
+            .imageLikes{
+                color  : $primery-blue;
+                font-size: $primery-font-size;
+                font-weight: $primery-font-weight;
+                span {
+                    margin-left: 5px;
+                }
+            }
+            .imageDiscription {
+                margin : 10px 0;
+                color  : $primery-ashe;
+                font-size: $primery-font-size;
+                font-weight: $secondary-font-weight;
+                span {
+                    display: block
+                }
+                .imagetags {
+                    color: $primery-blue;
+                    font-style: italic;
+                }
+            }
+            .imageComments {
+                color  : $primery-ashe;
+                font-size: $primery-font-size;
+            }
+        }
+    }
+
+    .liked {
+        color: $primery-red;
+    }
+ 
+}

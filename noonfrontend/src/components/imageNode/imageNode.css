@@ -1,0 +1,70 @@
+.continerNode {
+  width: 100%;
+  border-bottom: 1px solid #bdc3c7; }
+  .continerNode .wrapperNode {
+    width: 100%; }
+    .continerNode .wrapperNode .nodeHeader {
+      width: 100%;
+      display: inline-flex; }
+      .continerNode .wrapperNode .nodeHeader .wrapper {
+        padding: 10px 20px;
+        display: inline-flex; }
+      .continerNode .wrapperNode .nodeHeader .profilePic {
+        width: 10%; }
+        .continerNode .wrapperNode .nodeHeader .profilePic img {
+          border-radius: 25px;
+          width: 100%; }
+      .continerNode .wrapperNode .nodeHeader .profileName span {
+        color: #1e65d8;
+        position: relative;
+        left: 10px;
+        top: 7px;
+        font-size: 600; }
+    .continerNode .wrapperNode .nodeImage {
+      margin-bottom: -27px; }
+      .continerNode .wrapperNode .nodeImage img {
+        width: 100%; }
+      .continerNode .wrapperNode .nodeImage .imageOptions {
+        width: 100%;
+        position: relative;
+        bottom: 53px; }
+        .continerNode .wrapperNode .nodeImage .imageOptions .price {
+          color: #ecf0f1;
+          padding-left: 18px; }
+          .continerNode .wrapperNode .nodeImage .imageOptions .price .title {
+            font-weight: 100; }
+          .continerNode .wrapperNode .nodeImage .imageOptions .price .priceTag {
+            font-weight: 600; }
+        .continerNode .wrapperNode .nodeImage .imageOptions .favourite {
+          float: right;
+          position: relative;
+          bottom: 29px;
+          font-size: 24px;
+          right: 20px;
+          cursor: pointer; }
+    .continerNode .wrapperNode .nodeInfo {
+      width: 100%;
+      padding-bottom: 17px; }
+      .continerNode .wrapperNode .nodeInfo .wrapper {
+        padding: 0px 20px 10px 20px; }
+      .continerNode .wrapperNode .nodeInfo .imageLikes {
+        color: #1e65d8;
+        font-size: 12px;
+        font-weight: 600; }
+        .continerNode .wrapperNode .nodeInfo .imageLikes span {
+          margin-left: 5px; }
+      .continerNode .wrapperNode .nodeInfo .imageDiscription {
+        margin: 10px 0;
+        color: #7f8c8d;
+        font-size: 12px;
+        font-weight: 100; }
+        .continerNode .wrapperNode .nodeInfo .imageDiscription span {
+          display: block; }
+        .continerNode .wrapperNode .nodeInfo .imageDiscription .imagetags {
+          color: #1e65d8;
+          font-style: italic; }
+      .continerNode .wrapperNode .nodeInfo .imageComments {
+        color: #7f8c8d;
+        font-size: 12px; }
+  .continerNode .liked {
+    color: #c0392b; }

@@ -1,0 +1,13 @@
+@import 'styles/variables.scss';
+
+.menuWrapper{
+    width: 100%;
+    background-color: $primery-pink;
+    padding: 12px 10px;
+    justify-content: space-around;
+    display: inline-flex;
+    .menu-icons {
+        font-size: 35px;
+        color: $primery-white;
+    }
+}
