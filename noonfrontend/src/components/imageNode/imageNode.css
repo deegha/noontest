@@ -41,7 +41,8 @@
           bottom: 29px;
           font-size: 24px;
           right: 20px;
-          cursor: pointer; }
+          cursor: pointer;
+          z-index: 2; }
     .continerNode .wrapperNode .nodeInfo {
       width: 100%;
       padding-bottom: 17px; }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {connect}            from 'react-redux'
-import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
+import Grid from '../../components/grid/grid'
+import MDSpinner from "react-md-spinner";
+
 import * as imageActions from  '../../actions/imageActions'
 
 import ImageNode from   '../../components/imageNode/imageNode'
@@ -15,38 +17,26 @@ class MainPage extends Component {
         }
     } 
 
-    componentDidMount() {     
+    componentDidMount() {
+        this.props.dispatch(imageActions.startFetchingImages())
         this.props.dispatch(imageActions.getAllImages())
+        
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.images !== this.state.images) { 
+    componentWillReceiveProps(nextProps){ 
+        nextProps.images.map((image, key) => {
+            if(this.state.images[key] && image.user_has_liked !== this.state.images[key].user_has_liked){
+                this.setState({
+                    images : nextProps.images
+                })
+            }
+        })
+        
+         if(nextProps.images !== this.state.images) {
             this.setState({
                 images : nextProps.images
             })
         }
-        
-    }
-
-    rednderImageNode = () => {
-        let imageNodes =  []
-        console.log(this.state.images)
-        this.state.images.map((image, key)=>{ 
-            imageNodes.push(
-                <div key={key} className="nodeContiner">  
-                    <ImageNode image={image} handleFav={this.handleFav}></ImageNode>
-                </div>
-            )        
-        })
-        
-        if(imageNodes.length === 0) {
-            return(
-                <div>No Images</div>
-            )
-        }else {
-            return imageNodes
-        } 
-        
     }
 
     handleFav = (mediaId) => {
@@ -59,31 +49,47 @@ class MainPage extends Component {
         })
 
         if(likedByuserAlready){
+            this.props.dispatch(imageActions.startFetchingImages())
             this.props.dispatch(imageActions.removeFromfav(mediaId))
             console.log("removed")
         }else{
+            this.props.dispatch(imageActions.startFetchingImages())
             this.props.dispatch(imageActions.addToFav(mediaId))
             console.log("added")
         }
     }
   
     render() { 
+        let brakePoints = [700, 900, 1050];
+        if(this.state.images.length < 1) {
+           console.log("spinner")
+           return(
+               <div className="spinner">
+                 <MDSpinner/>
+               </div>
+           ) 
+        }
         return(
             <div>
-                <div className="continerImageNode">
-                   
-                    {this.rednderImageNode()}
-                  
-                </div>
-                
+            <Grid brakePoints={brakePoints}>
+                { this.state.images.map((image, key)=>{ 
+                    return(
+                        <div key={key} className="nodeContiner">  
+                            <ImageNode image={image} handleFav={this.handleFav}></ImageNode>
+                        </div>
+                    )     
+                })}
+                </Grid>
             </div>
         )
     }
 } 
 
 function mapStateToProps(state, ownProps) {
+    console.log(state)
   return {
-      images : state.imageData.images
+      images : state.imageData.images,
+      fetchingData : state.imageData.fetchingData
   }
 }
 

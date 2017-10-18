@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import Grid from '../../components/grid/grid'
+import MDSpinner from "react-md-spinner";
 
 import * as imageActions from  '../../actions/imageActions'
 import './favouritePage.scss'
@@ -15,6 +17,7 @@ class FavouritePage extends Component {
     } 
 
     componentDidMount() {     
+         this.props.dispatch(imageActions.startFetchingImages())
         this.props.dispatch(imageActions.getAllImages())
     }
 
@@ -24,42 +27,38 @@ class FavouritePage extends Component {
                 images : nextProps.images
             })
         }
-        
     }
 
-    rednderImageNode() {
-        let imageNodes =  []
-        
-        this.state.images.map((image, key)=>{
-            if(image.user_has_liked) { 
-               imageNodes.push(
-                   <div key={key} >  
-                        <ImageNode image={image} handleFav={this.handleFav.bind(this)}></ImageNode>
-                    </div>
-               ) 
-                    
-            }
-        })
-        
-        if(imageNodes.length == 0) {
-            return(
-                <div>No Favourite Images</div>
-            )
-        }else {
-            return imageNodes
-        } 
-    }
-
-    handleFav(mediaId) {
+    handleFav = (mediaId) =>  {
+        this.props.dispatch(imageActions.startFetchingImages())
         this.props.dispatch(imageActions.removeFromfav(mediaId))
     }
   
     render() { 
+        let brakePoints = [700, 900, 1050];
+        if(this.state.images.length < 1 || this.state.fetchingData === true ) {
+           console.log("spinner")
+           return(
+               <div className="spinner">
+                 <MDSpinner/>
+               </div>
+           ) 
+        }
         return(
             <div>
-                <div className="continerMain">
-                    {this.rednderImageNode()}
-                </div>
+            <Grid brakePoints={brakePoints}>
+                { 
+                    this.state.images.map((image, key)=>{ 
+                    if(image.user_has_liked) {
+                        return(
+                            <div key={key} className="nodeContiner">  
+                                <ImageNode image={image} handleFav={this.handleFav}></ImageNode>
+                            </div>
+                        )    
+                    }
+                     
+                 })}
+                </Grid>
             </div>
         )
     }
@@ -67,7 +66,8 @@ class FavouritePage extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-      images : state.image
+      images : state.imageData.images,
+      fetchingData : state.imageData.fetchingData
   }
 }
 

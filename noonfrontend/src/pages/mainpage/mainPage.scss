@@ -1,2 +1,26 @@
 @import 'styles/variables.scss';
+.nodeContiner {
+    margin: 10px;
+}
+.masonry{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: stretch;
+	width: 100%;
+	margin: auto;
+}
+.column{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-content: stretch;
+	flex-grow: 1;
+}
 
+.spinner {
+	width: 100%;
+	text-align: center;
+	position: relative
+	top 100px;
+}
