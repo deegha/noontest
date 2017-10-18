@@ -20,19 +20,13 @@ class MainPage extends Component {
     componentDidMount() {
         this.props.dispatch(imageActions.startFetchingImages())
         this.props.dispatch(imageActions.getAllImages())
-        
+
+        console.log(this.props, "props")
+       
     }
 
     componentWillReceiveProps(nextProps){ 
-        nextProps.images.map((image, key) => {
-            if(this.state.images[key] && image.user_has_liked !== this.state.images[key].user_has_liked){
-                this.setState({
-                    images : nextProps.images
-                })
-            }
-        })
-        
-         if(nextProps.images !== this.state.images) {
+         if(nextProps.images !== this.state.images) { console.log("in")
             this.setState({
                 images : nextProps.images
             })
@@ -59,7 +53,7 @@ class MainPage extends Component {
         }
     }
   
-    render() { 
+    render() { console.log(this.state.images)
         let brakePoints = [700, 900, 1050];
         if(this.state.images.length < 1) {
            console.log("spinner")
@@ -86,7 +80,6 @@ class MainPage extends Component {
 } 
 
 function mapStateToProps(state, ownProps) {
-    console.log(state)
   return {
       images : state.imageData.images,
       fetchingData : state.imageData.fetchingData

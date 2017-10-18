@@ -26,7 +26,7 @@ export default class Menu extends Component {
             </div>
         )
     }
-    updateDimensions = () => {  console.log("here"); console.log(this.state.width)
+    updateDimensions = () => { 
         this.setState({width: window.innerWidth},this.setMenuicons())
     }
     setMenuicons = () => {
