@@ -7,3 +7,13 @@
   .menuWrapper .menu-icons {
     font-size: 35px;
     color: #ecf0f1; }
+
+@media only screen and (min-width: 900px) {
+  .menuWrapper {
+    font-size: 15px;
+    display: inline-block;
+    text-align: right; }
+    .menuWrapper a {
+      color: #ecf0f1;
+      text-decoration: none;
+      margin-right: 20px; } }

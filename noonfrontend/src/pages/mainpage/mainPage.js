@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect}            from 'react-redux'
-
+import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 import * as imageActions from  '../../actions/imageActions'
 
 import ImageNode from   '../../components/imageNode/imageNode'
@@ -30,9 +30,10 @@ class MainPage extends Component {
 
     rednderImageNode = () => {
         let imageNodes =  []
-        this.state.images.map((image, key)=>{
+        console.log(this.state.images)
+        this.state.images.map((image, key)=>{ 
             imageNodes.push(
-                <div key={key} >  
+                <div key={key} className="nodeContiner">  
                     <ImageNode image={image} handleFav={this.handleFav}></ImageNode>
                 </div>
             )        
@@ -45,6 +46,7 @@ class MainPage extends Component {
         }else {
             return imageNodes
         } 
+        
     }
 
     handleFav = (mediaId) => {
@@ -68,8 +70,10 @@ class MainPage extends Component {
     render() { 
         return(
             <div>
-                <div className="continerMain">
+                <div className="continerImageNode">
+                   
                     {this.rednderImageNode()}
+                  
                 </div>
                 
             </div>

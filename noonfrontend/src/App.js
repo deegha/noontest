@@ -17,11 +17,13 @@ export default class App extends Component {
    <Provider store={store}>
     <BrowserRouter>
       <div>    
-        <Switch>
+        <div className="mainContaiiner">
+        <Switch >
           <Route path="/"  component={ MainPage } exact={true} />
           <Route path="/favourite"  component={ FavouritePage } exact={true} />
           <Route path="*"  component={()=>{return(<div>Not found</div>)}}/>
         </Switch>
+        </div>
         <div className="menu">
             <Menu></Menu>
         </div>

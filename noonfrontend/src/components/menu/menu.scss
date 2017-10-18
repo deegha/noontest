@@ -11,3 +11,18 @@
         color: $primery-white;
     }
 }
+
+@media only screen and (min-width: 900px) {
+    .menuWrapper {
+      font-size: 15px;
+      display: inline-block;
+      text-align: right;
+      a {
+        color: $primery-white;
+        text-decoration: none;
+        margin-right: 20px;
+      }
+    
+      
+    }
+}

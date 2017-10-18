@@ -5,15 +5,16 @@ import MenuPresentation from './menuPresentation'
 export default class Menu extends Component {
     constructor(props) {
         super(props);
-
+        
         this.state = {
-            width:null,
+            width:window.innerWidth,
             menuClass : "fixedTop",
             icons : {
                 fav : "Favourite",
                 home: "Home"
             }
         }
+
     }
 
     render() {
@@ -25,10 +26,10 @@ export default class Menu extends Component {
             </div>
         )
     }
-    updateDimensions = () => { 
+    updateDimensions = () => {  console.log("here"); console.log(this.state.width)
         this.setState({width: window.innerWidth},this.setMenuicons())
     }
-    setMenuicons = () => {console.log(this.state.width)
+    setMenuicons = () => {
         if(this.state.width < 900) {
             this.setState({
                 menuClass : "fixedBottom",
